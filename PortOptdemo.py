@@ -1,3 +1,4 @@
+pip install pandas_datareader scikit-learn matplotlib cvxopt seaborn yahoofinancials
 import streamlit as st
 import time
 import pandas as pd
