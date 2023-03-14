@@ -39,7 +39,7 @@ my_bar.empty()
 #st.title("Hello Streamlit")
 st.image('Logo_header@2x.jpg')
 #sector = "IT"
-sector = st.selectbox('Pick Sector', ('IT', 'AUTO', 'OIL&GAS'),0)
+sector = st.selectbox('Pick Sector', ('Choose from dropdown','IT', 'AUTO', 'OIL&GAS'),0)
 #sector = input("Enter Sector")
 if sector == 'IT':
     tickers = np.array(['TCS.NS','TECHM.NS','WIPRO.NS',
@@ -55,11 +55,11 @@ elif sector == 'OIL&GAS':
                     'PETRONET.NS', 'PANAMAPET.NS'])
 
 #algo = 'HRP'
-algo = st.selectbox('Pick Computation Algorithm', ('HRP', 'MVP'),0)
+algo = st.selectbox('Pick Computation Algorithm', ('Choose from dropdown','HRP', 'MVP'),0)
 #st.write(algo)
 
 #amt = 10000
-amt = st.text_input('Enter amount for investment:',10000)
+amt = st.text_input('Enter amount for investment:',"Enter amount")
 st.write('Chosen sector:',sector)
 st.write('Chosen algo:',algo)
 st.write('Entered amount:',amt)
