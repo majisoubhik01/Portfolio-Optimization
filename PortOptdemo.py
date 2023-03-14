@@ -37,7 +37,12 @@ for percent_complete in range(100):
 
 my_bar.empty()
 #st.title("Hello Streamlit")
-st.image('Logo_header@2x.jpg')
+col1, mid, col2 = st.beta_columns([1,1,20])
+with col1:
+    st.image('Logo_header@2x.jpg', width=60)
+with col2:
+    st.write('Portfolio Optimization using HRP and MVP')
+#st.image('Logo_header@2x.jpg')
 #sector = "IT"
 sector = st.selectbox('Pick Sector', ('Choose from dropdown','IT', 'AUTO', 'OIL&GAS'),0)
 #sector = input("Enter Sector")
