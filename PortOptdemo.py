@@ -42,6 +42,7 @@ with col1:
     st.image('Logo_header@2x.jpg',width=300)
 with col2:
     st.title('Portfolio Optimization using HRP and MVP')
+    st.subheader("By Group 4")
 #st.image('Logo_header@2x.jpg')
 #sector = "IT"
 sector = st.selectbox('Pick Sector', ('Choose from dropdown','IT', 'AUTO', 'OIL&GAS'),0)
