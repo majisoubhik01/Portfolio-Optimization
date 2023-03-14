@@ -197,7 +197,7 @@ if st.button("Calculate Amounts for each stock"):
          hrp = round(getHRP(cov, corr),2)
          portfolios = pd.DataFrame([hrp], index=['Amounts']).T
       else:
-         mvp = round(getMVP(cov),2)
+         mvp = getMVP(cov)
          mvp = pd.Series(mvp, index=cov.index)
          portfolios = pd.DataFrame([round(mvp,2)], index=['Amounts']).T
       #portfolios = pd.DataFrame([ivp, hrp], index=['IVP', 'HRP']).T
