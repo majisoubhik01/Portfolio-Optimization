@@ -131,7 +131,7 @@ if st.button("Calculate Amounts for each stock"):
              alpha = 1 - cVar0 / (cVar0 + cVar1)
              w[cItems0] *= alpha  # weight 1
              w[cItems1] *= 1 - alpha  # weight 2
-       return w
+      return w
 
    def getMVP(cov):
       cov = cov.T.values
