@@ -204,5 +204,5 @@ if st.button("Calculate Amounts for each stock"):
       return portfolios
 
    portfolios = get_req_portfolios(returns)
-   #portfolios.iloc[:,0] = round(portfolios.iloc[:,0]*int(amt),2)
-   st.table(portfolios.iloc[:,0]*amt)
+   portfolios.iloc[:,0] = portfolios.iloc[:,0]*int(amt)
+   st.table(portfolios.iloc[:,0])
