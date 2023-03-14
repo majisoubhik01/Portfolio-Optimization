@@ -194,15 +194,15 @@ if st.button("Calculate Amounts for each stock"):
    def get_req_portfolios(returns):
       cov, corr = returns.cov(), returns.corr()
       if algo == 'HRP':
-         hrp = getHRP(cov, corr)
-         portfolios = pd.DataFrame([hrp], index=['HRP']).T
+         hrp = round(getHRP(cov, corr),2)
+         portfolios = pd.DataFrame([hrp], index=['Amounts']).T
       else:
-         mvp = getMVP(cov)
+         mvp = round(getMVP(cov),2)
          mvp = pd.Series(mvp, index=cov.index)
-         portfolios = pd.DataFrame([mvp], index=['CLA']).T
+         portfolios = pd.DataFrame([mvp], index=['Amounts']).T
       #portfolios = pd.DataFrame([ivp, hrp], index=['IVP', 'HRP']).T
       return portfolios
 
    portfolios = get_req_portfolios(returns)
-   portfolios.iloc[:,0] = round(portfolios.iloc[:,0]*int(amt),2)
-   st.table(portfolios.iloc[:,0])
+   #portfolios.iloc[:,0] = round(portfolios.iloc[:,0]*int(amt),2)
+   st.table(portfolios.iloc[:,0]*amt)
