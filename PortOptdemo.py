@@ -59,7 +59,7 @@ algo = st.selectbox('Pick Computation Algorithm', ('Choose from dropdown','HRP',
 #st.write(algo)
 
 #amt = 10000
-amt = st.text_input('Enter amount for investment:',"Enter amount")
+amt = st.text_input('Enter amount for investment:',placeholder ="Enter amount")
 st.write('Chosen sector:',sector)
 st.write('Chosen algo:',algo)
 st.write('Entered amount:',amt)
