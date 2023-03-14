@@ -30,62 +30,6 @@ from cvxopt import blas, solvers
 st. set_page_config(layout="wide")
 progress_text = "Operation in progress. Please wait."
 my_bar = st.progress(0, text=progress_text)
-
-for percent_complete in range(100):
-   time.sleep(0.02)
-   my_bar.progress(percent_complete + 1, text=progress_text)
-#st.title("Hello Streamlit")
-st.image('Logo_header@2x.jpg')
-sector = st.selectbox('Pick sector', ['IT', 'AUTO', 'OIL&GAS'])
-#sector = input("Enter Sector")
-if sector == 'IT':
-    tickers = np.array(['TCS.NS','TECHM.NS','WIPRO.NS',
-                    'HCLTECH.NS','MPHASIS.NS','INFY.NS',
-                    'NIITTECH.NS', 'ZENSARTECH.NS', 'NUCLEUS.NS'])
-elif sector == 'AUTO':
-    tickers = np.array(['ASHOKLEY.NS','MARUTI.NS','TATAMOTORS.NS','ATULAUTO.NS',
-                    'BAJAJ-AUTO.NS','EICHERMOT.NS','HEROMOTOCO.NS',
-                    'HINDMOTORS.NS', 'TATAMTRDVR.NS', 'M&M.NS'])
-elif sector == 'OIL&GAS':
-    tickers = np.array(['BPCL.NS','RELIANCE.NS','TIDEWATER.NS','MRPL.NS',
-                    'GULFPETRO.NS','GULFOILLUB.NS','IOC.NS',
-                    'PETRONET.NS', 'PANAMAPET.NS'])
-
-algo = st.selectbox('Pick algo', ['HRP', 'MVP'])
-#st.write(algo)
-
-amt = st.text_input('Enter amount:',10000)
-
-yahoo_financials = YahooFinancials(tickers)
-data = yahoo_financials.get_historical_price_data(start_date='2018-01-01', 
-                                                  end_date='2023-02-28', 
-                                                  time_interval='daily')
-#st.write(amt)
-dataset = pd.DataFrame({a: {x['formatted_date']: x['close'] for x in data[a]['prices']} for a in tickers})
-
-#dataset = pd.read_csv("autoret.csv")
-missing_fractions = dataset.isnull().mean().sort_values(ascending=False)
-
-missing_fractions.head(10)
-
-drop_list = sorted(list(missing_fractions[missing_fractions > 0.3].index))
-
-dataset.drop(labels=drop_list, axis=1, inplace=True)
-
-dataset=dataset.fillna(method='ffill')
-
-X = dataset.copy()
-row= len(X)
-train_len = int(row*.8)
-#train_len = int(row*.8846)
-
-X_train = dataset.head(train_len)
-
-X_test = dataset.tail(row-train_len)
-
-returns =  X_train.pct_change().dropna() #pd.read_csv("autoret.csv") #X_train.pct_change().dropna()
-returns_test =  X_test.pct_change().dropna() #pd.read_csv("autoret_test.csv") #X_test.pct_change().dropna()
-
 def correlDist(corr):
     # A distance matrix based on correlation, where 0<=d[i,j]<=1
     # This is a proper distance metric
@@ -203,8 +147,62 @@ def get_req_portfolios(returns):
     #portfolios = pd.DataFrame([ivp, hrp], index=['IVP', 'HRP']).T
     return portfolios
 
-portfolios = get_req_portfolios(returns)
+for percent_complete in range(100):
+   time.sleep(0.02)
+   my_bar.progress(percent_complete + 1, text=progress_text)
+#st.title("Hello Streamlit")
+st.image('Logo_header@2x.jpg')
+sector = st.selectbox('Pick sector', ['IT', 'AUTO', 'OIL&GAS'])
+#sector = input("Enter Sector")
+if sector == 'IT':
+    tickers = np.array(['TCS.NS','TECHM.NS','WIPRO.NS',
+                    'HCLTECH.NS','MPHASIS.NS','INFY.NS',
+                    'NIITTECH.NS', 'ZENSARTECH.NS', 'NUCLEUS.NS'])
+elif sector == 'AUTO':
+    tickers = np.array(['ASHOKLEY.NS','MARUTI.NS','TATAMOTORS.NS','ATULAUTO.NS',
+                    'BAJAJ-AUTO.NS','EICHERMOT.NS','HEROMOTOCO.NS',
+                    'HINDMOTORS.NS', 'TATAMTRDVR.NS', 'M&M.NS'])
+elif sector == 'OIL&GAS':
+    tickers = np.array(['BPCL.NS','RELIANCE.NS','TIDEWATER.NS','MRPL.NS',
+                    'GULFPETRO.NS','GULFOILLUB.NS','IOC.NS',
+                    'PETRONET.NS', 'PANAMAPET.NS'])
 
-portfolios.iloc[:,0] = round(portfolios.iloc[:,0]*int(amt),2)
+algo = st.selectbox('Pick algo', ['HRP', 'MVP'])
+#st.write(algo)
+
+amt = st.text_input('Enter amount for investment:',10000)
+
 if st.button("Calculate Amounts for each stock"):
+   yahoo_financials = YahooFinancials(tickers)
+   data = yahoo_financials.get_historical_price_data(start_date='2018-01-01', 
+                                                  end_date='2023-02-28', 
+                                                  time_interval='daily')
+   
+   dataset = pd.DataFrame({a: {x['formatted_date']: x['close'] for x in data[a]['prices']} for a in tickers})
+
+   #dataset = pd.read_csv("autoret.csv")
+   missing_fractions = dataset.isnull().mean().sort_values(ascending=False)
+
+   missing_fractions.head(10)
+
+   drop_list = sorted(list(missing_fractions[missing_fractions > 0.3].index))
+
+   dataset.drop(labels=drop_list, axis=1, inplace=True)
+
+   dataset=dataset.fillna(method='ffill')
+
+   X = dataset.copy()
+   row= len(X)
+   train_len = int(row*.8)
+   #train_len = int(row*.8846)
+
+   X_train = dataset.head(train_len)
+
+   X_test = dataset.tail(row-train_len)
+
+   returns =  X_train.pct_change().dropna() #pd.read_csv("autoret.csv") #X_train.pct_change().dropna()
+   returns_test =  X_test.pct_change().dropna() #pd.read_csv("autoret_test.csv") #X_test.pct_change().dropna()
+
+   portfolios = get_req_portfolios(returns)
+   portfolios.iloc[:,0] = round(portfolios.iloc[:,0]*int(amt),2)
    st.table(portfolios.iloc[:,0])
