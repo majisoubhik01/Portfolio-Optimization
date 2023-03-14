@@ -60,9 +60,9 @@ algo = st.selectbox('Pick Computation Algorithm', ('Choose from dropdown','HRP',
 
 #amt = 10000
 amt = st.text_input('Enter amount for investment:',placeholder ="Enter amount")
-st.write('Chosen sector:',sector)
-st.write('Chosen algo:',algo)
-st.write('Entered amount:',amt)
+#st.write('Chosen sector:',sector)
+#st.write('Chosen algo:',algo)
+#st.write('Entered amount:',amt)
 if st.button("Calculate Amounts for each stock"):
    yahoo_financials = YahooFinancials(tickers)
    data = yahoo_financials.get_historical_price_data(start_date='2018-01-01', 
