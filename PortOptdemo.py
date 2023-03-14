@@ -83,6 +83,9 @@ if st.button("Calculate Amounts for each stock"):
    X_train = dataset.head(train_len)
 
    X_test = dataset.tail(row-train_len)
+   
+   returns =  X_train.pct_change().dropna() #pd.read_csv("autoret.csv") #X_train.pct_change().dropna()
+   returns_test =  X_test.pct_change().dropna() #pd.read_csv("autoret_test.csv") #X_test.pct_change().dropna()
    def correlDist(corr):
     # A distance matrix based on correlation, where 0<=d[i,j]<=1
     # This is a proper distance metric
@@ -194,9 +197,6 @@ if st.button("Calculate Amounts for each stock"):
          portfolios = pd.DataFrame([mvp], index=['CLA']).T
       #portfolios = pd.DataFrame([ivp, hrp], index=['IVP', 'HRP']).T
       return portfolios
-
-   returns =  X_train.pct_change().dropna() #pd.read_csv("autoret.csv") #X_train.pct_change().dropna()
-   returns_test =  X_test.pct_change().dropna() #pd.read_csv("autoret_test.csv") #X_test.pct_change().dropna()
 
    portfolios = get_req_portfolios(returns)
    portfolios.iloc[:,0] = round(portfolios.iloc[:,0]*int(amt),2)
