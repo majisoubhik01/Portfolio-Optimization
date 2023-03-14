@@ -37,9 +37,9 @@ for percent_complete in range(100):
 
 my_bar.empty()
 #st.title("Hello Streamlit")
-col1, mid, col2 = st.beta_columns([1,1,20])
+col1, mid, col2 = st.columns([15,5,50])
 with col1:
-    st.image('Logo_header@2x.jpg')
+    st.image('Logo_header@2x.jpg',width=300)
 with col2:
     st.title('Portfolio Optimization using HRP and MVP')
 #st.image('Logo_header@2x.jpg')
