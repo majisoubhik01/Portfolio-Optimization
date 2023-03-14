@@ -28,12 +28,14 @@ import cvxopt as opt
 from cvxopt import blas, solvers
 
 st. set_page_config(layout="wide")
-progress_text = "Operation in progress. Please wait."
+progress_text = "Initializing Website. Please Wait..."
 my_bar = st.progress(0, text=progress_text)
 
 for percent_complete in range(100):
    time.sleep(0.02)
    my_bar.progress(percent_complete + 1, text=progress_text)
+
+my_bar.empty()
 #st.title("Hello Streamlit")
 st.image('Logo_header@2x.jpg')
 #sector = "IT"
