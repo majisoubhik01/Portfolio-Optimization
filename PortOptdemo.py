@@ -37,7 +37,7 @@ for percent_complete in range(100):
 #st.title("Hello Streamlit")
 st.image('Logo_header@2x.jpg')
 #sector = "IT"
-sector = st.selectbox('Pick Sector', ('IT', 'AUTO', 'OIL&GAS'),"IT")
+sector = st.selectbox('Pick Sector', ('IT', 'AUTO', 'OIL&GAS'),0)
 #sector = input("Enter Sector")
 if sector == 'IT':
     tickers = np.array(['TCS.NS','TECHM.NS','WIPRO.NS',
@@ -53,7 +53,7 @@ elif sector == 'OIL&GAS':
                     'PETRONET.NS', 'PANAMAPET.NS'])
 
 #algo = 'HRP'
-algo = st.selectbox('Pick Computation Algorithm', ('HRP', 'MVP'),'HRP')
+algo = st.selectbox('Pick Computation Algorithm', ('HRP', 'MVP'),0)
 #st.write(algo)
 
 #amt = 10000
