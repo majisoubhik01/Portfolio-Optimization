@@ -69,7 +69,7 @@ amt = st.text_input('Enter amount for investment:',placeholder ="Enter amount")
 #st.write('Chosen sector:',sector)
 #st.write('Chosen algo:',algo)
 #st.write('Entered amount:',amt)
-if st.button("Calculate amounts for each stock in "+sector+" sector"):
+if st.button("Calculate amounts for each stock in "+sector+" sector using "+algo+" algorithm"):
    yahoo_financials = YahooFinancials(tickers)
    data = yahoo_financials.get_historical_price_data(start_date='2018-01-01', 
                                                   end_date='2023-02-28', 
