@@ -204,7 +204,8 @@ if st.button("Calculate Amounts for each stock"):
          portfolios = pd.DataFrame([round(mvp,2)], index=['Amounts']).T
       #portfolios = pd.DataFrame([ivp, hrp], index=['IVP', 'HRP']).T
       return portfolios
-
+   
    portfolios = get_req_portfolios(returns)
+   portfolios.index.names = ['Stocks']
    portfolios.iloc[:,0] = portfolios.iloc[:,0]*int(amt)
    st.table(portfolios.iloc[:,0])
