@@ -199,7 +199,7 @@ if st.button("Calculate Amounts for each stock"):
       else:
          mvp = round(getMVP(cov),2)
          mvp = pd.Series(mvp, index=cov.index)
-         portfolios = pd.DataFrame([mvp], index=['Amounts']).T
+         portfolios = pd.DataFrame([round(mvp,2)], index=['Amounts']).T
       #portfolios = pd.DataFrame([ivp, hrp], index=['IVP', 'HRP']).T
       return portfolios
 
