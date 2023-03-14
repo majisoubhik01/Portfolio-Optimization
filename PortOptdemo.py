@@ -44,7 +44,7 @@ sector = st.selectbox('Pick Sector', ('Choose from dropdown','IT', 'AUTO', 'OIL&
 if sector == 'IT':
     tickers = np.array(['TCS.NS','TECHM.NS','WIPRO.NS',
                     'HCLTECH.NS','MPHASIS.NS','INFY.NS',
-                    'NIITTECH.NS', 'ZENSARTECH.NS', 'NUCLEUS.NS'])
+                     'SUBEXLTD.NS','ZENSARTECH.NS', 'NUCLEUS.NS'])
 elif sector == 'AUTO':
     tickers = np.array(['ASHOKLEY.NS','MARUTI.NS','TATAMOTORS.NS','ATULAUTO.NS',
                     'BAJAJ-AUTO.NS','EICHERMOT.NS','HEROMOTOCO.NS',
