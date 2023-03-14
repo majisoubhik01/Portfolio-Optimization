@@ -39,9 +39,9 @@ my_bar.empty()
 #st.title("Hello Streamlit")
 col1, mid, col2 = st.beta_columns([1,1,20])
 with col1:
-    st.image('Logo_header@2x.jpg', width=60)
+    st.image('Logo_header@2x.jpg')
 with col2:
-    st.write('Portfolio Optimization using HRP and MVP')
+    st.title('Portfolio Optimization using HRP and MVP')
 #st.image('Logo_header@2x.jpg')
 #sector = "IT"
 sector = st.selectbox('Pick Sector', ('Choose from dropdown','IT', 'AUTO', 'OIL&GAS'),0)
