@@ -36,6 +36,7 @@ for percent_complete in range(100):
    my_bar.progress(percent_complete + 1, text=progress_text)
 #st.title("Hello Streamlit")
 st.image('Logo_header@2x.jpg')
+sector = "IT"
 sector = st.selectbox('Pick sector', ['IT', 'AUTO', 'OIL&GAS'])
 #sector = input("Enter Sector")
 if sector == 'IT':
@@ -51,9 +52,11 @@ elif sector == 'OIL&GAS':
                     'GULFPETRO.NS','GULFOILLUB.NS','IOC.NS',
                     'PETRONET.NS', 'PANAMAPET.NS'])
 
+algo = 'HRP'
 algo = st.selectbox('Pick algo', ['HRP', 'MVP'])
 #st.write(algo)
 
+amt = 10000
 amt = st.text_input('Enter amount for investment:',10000)
 
 if st.button("Calculate Amounts for each stock"):
