@@ -36,8 +36,8 @@ for percent_complete in range(100):
    my_bar.progress(percent_complete + 1, text=progress_text)
 #st.title("Hello Streamlit")
 st.image('Logo_header@2x.jpg')
-sector = "IT"
-sector = st.selectbox('Pick sector', ['IT', 'AUTO', 'OIL&GAS'])
+#sector = "IT"
+sector = st.selectbox('Pick Sector', ('IT', 'AUTO', 'OIL&GAS'),"IT")
 #sector = input("Enter Sector")
 if sector == 'IT':
     tickers = np.array(['TCS.NS','TECHM.NS','WIPRO.NS',
@@ -52,13 +52,15 @@ elif sector == 'OIL&GAS':
                     'GULFPETRO.NS','GULFOILLUB.NS','IOC.NS',
                     'PETRONET.NS', 'PANAMAPET.NS'])
 
-algo = 'HRP'
-algo = st.selectbox('Pick algo', ['HRP', 'MVP'])
+#algo = 'HRP'
+algo = st.selectbox('Pick Computation Algorithm', ('HRP', 'MVP'),'HRP')
 #st.write(algo)
 
-amt = 10000
+#amt = 10000
 amt = st.text_input('Enter amount for investment:',10000)
-
+st.write('Chosen sector:',sector)
+st.write('Chosen algo:',algo)
+st.write('Entered amount:',amt)
 if st.button("Calculate Amounts for each stock"):
    yahoo_financials = YahooFinancials(tickers)
    data = yahoo_financials.get_historical_price_data(start_date='2018-01-01', 
