@@ -206,5 +206,5 @@ def get_req_portfolios(returns):
 portfolios = get_req_portfolios(returns)
 
 portfolios.iloc[:,0] = round(portfolios.iloc[:,0]*int(amt),2)
-if st.button('Calculate Amounts for each stock"):
+if st.button("Calculate Amounts for each stock"):
    st.table(portfolios.iloc[:,0])
