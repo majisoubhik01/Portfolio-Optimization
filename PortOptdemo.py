@@ -27,15 +27,15 @@ from sklearn import cluster, covariance, manifold
 import cvxopt as opt
 from cvxopt import blas, solvers
 
-st. set_page_config(layout="wide")
-progress_text = "Initializing Website. Please Wait..."
-my_bar = st.progress(0, text=progress_text)
+st.set_page_config(layout="wide")
+#progress_text = "Initializing Website. Please Wait..."
+#my_bar = st.progress(0, text=progress_text)
 
-for percent_complete in range(100):
-   time.sleep(0.01)
-   my_bar.progress(percent_complete + 1, text=progress_text)
+#for percent_complete in range(100):
+   #time.sleep(0.01)
+   #my_bar.progress(percent_complete + 1, text=progress_text)
 
-my_bar.empty()
+#my_bar.empty()
 #st.title("Hello Streamlit")
 col1, mid, col2 = st.columns([15,5,50])
 with col1:
