@@ -108,7 +108,7 @@ if st.button("Calculate Amounts for each stock"):
          sortIx = sortIx.append(df0)  # item 2
          sortIx = sortIx.sort_index()  # re-sort
          sortIx.index = range(sortIx.shape[0])  # re-index
-       return sortIx.tolist()
+      return sortIx.tolist()
 
    def getClusterVar(cov,cItems):
      # Compute variance per cluster
